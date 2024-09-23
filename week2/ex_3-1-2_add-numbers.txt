@@ -1,0 +1,8 @@
+ADD NUMBERS
+Allow the user to input numbers, add them and print the result.
+
+1. Prompt the user for numbers. 
+2. Allow the user to input numbers until he stops by pressing a specific key.
+3. Save all the numbers, as for example an array.
+4. Sum the numbers.
+5. Print the result.
