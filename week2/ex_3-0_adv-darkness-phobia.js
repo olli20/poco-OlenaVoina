@@ -1,23 +1,61 @@
-DARKNESS PHOBIA
-One family wants to get through a tunnel. Dad can make it in 1 minute, mama in 2 minutes, son in 4 and
-daughter in 5 minutes. Unfortunately, not more than two persons can go through the narrow tunnel at one
-time, moving at the speed of the slower one.
-Can they all make it to the other side if they have a torch that lasts only 12 minutes and they are afraid of the
-dark?
+// DARKNESS PHOBIA
+// One family wants to get through a tunnel. Dad can make it in 1 minute, mama in 2 minutes, son in 4 and
+// daughter in 5 minutes. Unfortunately, not more than two persons can go through the narrow tunnel at one
+// time, moving at the speed of the slower one.
+// Can they all make it to the other side if they have a torch that lasts only 12 minutes and they are afraid of the
+// dark?
 
-Calculating the min time to get to another side of the tunnel
-0. Problem                                                     F M S D * |             |
-1. Father & Mother go to another side (+ torch)    2 min       S D       |  F M *  >>  |
-2. Father goes back (+ torch)                      1 min       S D       |  << F *     |  M
-3. Son & Daughter go to another side (+ torch)     5 min       F         |  S D *  >>  |  M
-4. Mother goes back (+ torch)                      2 min       F         |  << M *     |  S D
-5. Father & Mother go to another side (+ torch)    2 min                 |  F M *  >>  |  S D
-6. Solved                                          Total 12 min.         |             |  F M S D
+const family = [
+    {
+        id: 0,
+        name: "father",
+        speed: 1,
+        location: "start",
+        hasTotch: false,
+    },
+    {
+        id: 1,
+        name: "mother",
+        speed: 2,
+        location: "start",
+        hasTotch: false,
+    },
+    {
+        id: 2,
+        name: "son",
+        speed: 4,
+        location: "start",
+        hasTotch: false,
+    },
+    {
+        id: 3,
+        name: "daughter",
+        speed: 5,
+        location: "start",
+        hasTotch: false,
+    }
+]
+
+const torch = 12;
+
+const solution = (team, maxDuration) => {
+    //pseudo code
+    // 1. Create a list of all possible scenarios
+    // 2. Calculate the duration of each scenario based on the speed of each family member
+    // 3. Check the duration of each scenario: 
+    //   3.1. If there are scenarios whose duration <= maxDuration: 
+    //          - success
+    //          - print out those scenarios in a human-friendly format         
+    //   3.2. If there is not even one such scenario: 
+    //          - failure
+    //          - print out that the problem has no solution
 
 
-The following solution takes 13 min, and does not solve the problem
-1. Papa & Mana      >> 2 min
-2. Papa goes back   << 1 min
-3. Papa & Son       >> 4 min
-4. Papa goes back   << 1 min
-5. Papa & Daughter  >> 5 min 
+    let scenarios = []; 
+    // Two people go to the other side.
+    // One person returns with the torch.
+    // Repeat until all are across.
+    // Track each scenario to ensure all possibilities are explored.
+
+    let isPossible; // is it possible to cross the tunnel in a time equal to the given duration
+}
