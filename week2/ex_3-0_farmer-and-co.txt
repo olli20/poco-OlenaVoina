@@ -1,0 +1,15 @@
+FARMER, GOAT, CABBAGE, WOLF
+A farmer needs to cross a river with a wolf, a goat, and a cabbage. 
+He can only take one item with him at a time.
+If left together, the wolf will eat the goat, and the goat will eat the cabbage. 
+How can the farmer get all three items across the river safely?
+
+0. Problem   						                    C W G >	|      | 
+1. The farmer takes the goat to another side            C W 	| G >  |  
+2. Go back empty   					                    C W  	|  <   |  	G 
+3. We take the wolf to another side the river   		C 	    | W >  |  	G 
+4. Go back with the goat   				                C 	    | < G  |  	W
+5. We take the cabbage to another side of the river  	G 	    | C >  |  	W 
+6. Go back empty  					                    G 	    |  <   | 	C  W 
+7. We take the goat to another side of the river  		        | G >  | 	C  W 
+8. Solved   						 	                        |      |  	> C  W  G
