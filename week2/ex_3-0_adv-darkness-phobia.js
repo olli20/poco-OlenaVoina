@@ -38,7 +38,7 @@ const family = [
 
 const torch = 12;
 
-const solution = (team, maxDuration) => {
+const isMissionPossible = (team, maxDuration) => {
     //pseudo code
     // 1. Create a list of all possible scenarios
     // 2. Calculate the duration of each scenario based on the speed of each family member
@@ -50,12 +50,9 @@ const solution = (team, maxDuration) => {
     //          - failure
     //          - print out that the problem has no solution
 
-
     let scenarios = []; 
     // Two people go to the other side.
     // One person returns with the torch.
     // Repeat until all are across.
     // Track each scenario to ensure all possibilities are explored.
-
-    let isPossible; // is it possible to cross the tunnel in a time equal to the given duration
 }
