@@ -1,0 +1,12 @@
+Which number is bigger? 
+
+Declare 2 variables, both numbers. Compare which number is greater Log the output,
+e.g. "The greater number of 5 and 10 is 10." Add an output for the else statement, e.g. The smaller number
+
+1. Declare two variables A and B, both of type number.
+2. Create a variable C for the output, which will be of type string.
+3. Compare the values of A and B:
+    3.1 If A > B, set C as the concatenation of the strings: "The greater number of " + variable A + " and " + variable B + " is " + variable A.
+    3.2 If A < B, set C as the concatenation of the strings: "The greater number of " + variable A + " and " + variable B + " is " + variable B.
+    3.3 Else, set C to "Both numbers are equal".
+4. Print the string stored in variable C.
