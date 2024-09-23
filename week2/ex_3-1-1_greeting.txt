@@ -1,0 +1,7 @@
+GREETING
+Create a program that prompts for your name and prints a greeting using your name.
+
+0. Have a greeting phrase with a blank space for the name.
+1. Prompt for the name and save it.
+2. Insert the name into the greeting phrase and save the result.
+3. Print the result.
