@@ -6,16 +6,18 @@ Can they all make it to the other side if they have a torch that lasts only 12 m
 dark?
 
 Calculating the min time to get to another side of the tunnel
+
 0. Problem                                                     F M S D * |             |
 1. Father & Mother go to another side (+ torch)    2 min       S D       |  F M *  >>  |
 2. Father goes back (+ torch)                      1 min       S D       |  << F *     |  M
 3. Son & Daughter go to another side (+ torch)     5 min       F         |  S D *  >>  |  M
 4. Mother goes back (+ torch)                      2 min       F         |  << M *     |  S D
 5. Father & Mother go to another side (+ torch)    2 min                 |  F M *  >>  |  S D
-6. Solved                                          Total 12 min.         |             |  F M S D
+6. Solved                                          = 12 min.             |             |  F M S D
 
 
 The following solution takes 13 min, and does not solve the problem
+
 1. Papa & Mana      >> 2 min
 2. Papa goes back   << 1 min
 3. Papa & Son       >> 4 min
