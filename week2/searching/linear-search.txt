@@ -1,0 +1,22 @@
+Problem
+We need to find a specified element within an array and display its index withing the array.
+
+Linear Search
+
+Initialize i to 0, representing the index of the array we are currently checking.
+
+Start iterating across the array from the first element:
+
+Check if the current element is the one we are looking for:
+
+    - If the current element is the one we are looking for:
+        - Alert: "The specified element is found and its index is " + i
+        - Stop the search.
+    - If the current element is not the one we are looking for and we are not at the last position of the array:
+        - Increment i by 1.
+        - Continue to the next iteration.
+    - Else:
+        - Stop the search.
+        - Alert: "The specified element is not found in the array."
+
+
