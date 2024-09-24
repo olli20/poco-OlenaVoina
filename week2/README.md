@@ -1,0 +1,1 @@
+Algorithm is a step-by-step set of instructions for compleating a task.

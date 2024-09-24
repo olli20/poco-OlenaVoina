@@ -39,7 +39,7 @@ const family = [
 const torch = 12;
 
 const isMissionPossible = (team, maxDuration) => {
-    //pseudo code
+    // abstract pseudo code
     // 1. Create a list of all possible scenarios
     // 2. Calculate the duration of each scenario based on the speed of each family member
     // 3. Check the duration of each scenario: 
