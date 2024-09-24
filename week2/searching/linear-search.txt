@@ -1,7 +1,7 @@
 Problem
 We need to find a specified element within an array and display its index withing the array.
 
-Linear Search
+Linear Searchdfsdfsdfsf
 
 Initialize i to 0, representing the index of the array we are currently checking.
 
