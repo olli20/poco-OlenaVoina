@@ -1,0 +1,36 @@
+Write a program that asks the user for a date. Find the day of the year for the given date. For example,
+January 1st would be 1, and December 31st is 365.
+a. Do not include leap years.
+b. Include leap years. Check the rules for leap years on the internet, and implement them in your program.
+
+
+* Without leap years *
+
+Init array allMonths = [{month: 01, days: 31}, {month: 02, days: 28}, {month: 03, days: 31}, {month: 04, days: 30}, {month: 05, days: 31}, {month: 06, days: 30}, {month: 07, days: 31}, {month: 08, days: 31}, {month: 09, days: 30}, {month: 10, days: 31}, {month: 11, days: 30}, {month: 12, days: 31}]
+
+Init totalDays = 0 for output.
+
+Prompt user for inputDate = "Enter a date (Month/Day/Year)"
+
+Validate inputDate (ensure format is correct)
+
+Convert inputDate into {month: mm, day: dd}
+Init {month, day} = the converted date object
+
+If month = 1 then
+    totalDays = day
+    Print totalDays
+    End
+
+Else
+    Init fullMonths = month - 1
+    Init counter = 0
+    
+    Repeat until counter < fullMonths
+        totalDays = totalDays + allMonths[counter].days
+        counter = counter + 1
+    
+    totalDays = totalDays + day
+    Print totalDays
+    End
+
