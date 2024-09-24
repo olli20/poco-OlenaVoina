@@ -1,7 +1,19 @@
 Problem
 We need to find a specified element within an array and display its index withing the array.
 
-Linear Searchdfsdfsdfsf
+Linear Search
+
+**Shorter version**
+
+1. Repeat for each element in the array, starting at the first element:
+    1.1 If the current element is the one we are looking for:
+        - Report the element (or its index).
+        - Stop the search.
+    1.2 Otherwise, move to the next element.
+2. If the end of the array is reached and the element was not found:
+    - Report that the element is not in the array.
+
+**Longer version**
 
 Initialize i to 0, representing the index of the array we are currently checking.
 
