@@ -2,7 +2,7 @@ Combine Ex. 3.1.2 and 3.1.4 into one program.
 The program should ask the user if they want to add or subtract two numbers. Then the program should ask
 for the two numbers and print the result.
 
-1. Prompt the user to add or subtract two numbers and store the answer in a variable C. 
+1. Prompt the user for operation: to add or to subtract. Store the answer in a variable C. 
 If the answer is "add", proceed with addition. If the answer is "subtract", proceed with subtraction.
 
 2. Prompt the user for two numbers and store them in variables A and B.

@@ -6,7 +6,10 @@ b. Include leap years. Check the rules for leap years on the internet, and imple
 
 * Without leap years *
 
-Init array allMonths = [{month: 01, days: 31}, {month: 02, days: 28}, {month: 03, days: 31}, {month: 04, days: 30}, {month: 05, days: 31}, {month: 06, days: 30}, {month: 07, days: 31}, {month: 08, days: 31}, {month: 09, days: 30}, {month: 10, days: 31}, {month: 11, days: 30}, {month: 12, days: 31}]
+Init yearStructure = [
+    {month: 01, days: 31}, {month: 02, days: 28}, {month: 03, days: 31}, {month: 04, days: 30}, {month: 05, days: 31}, {month: 06, days: 30}, {month: 07, days: 31}, {month: 08, days: 31}, {month: 09, days: 30}, {month: 10, days: 31}, {month: 11, days: 30}, {month: 12, days: 31},
+]
+(it's an array of objects for storing information about the monthes of the year)
 
 Init totalDays = 0 for output.
 
@@ -27,7 +30,7 @@ Else
     Init counter = 0
     
     Repeat until counter < fullMonths
-        totalDays = totalDays + allMonths[counter].days
+        totalDays = totalDays + yearStructure[counter].days
         counter = counter + 1
     
     totalDays = totalDays + day
