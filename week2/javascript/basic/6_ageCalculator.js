@@ -72,6 +72,7 @@ const calculateAge = async () => {
     const ageInFuture = futureYear - birthYear;
 
     console.log(`I will be either ${ageInFuture - 1} or ${ageInFuture} in ${futureYear}`);
+    return;
 }
 
 calculateAge();
