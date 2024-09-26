@@ -45,12 +45,10 @@ c) Evaluate this question: what is a + b in the following code?
 6
 d) What is c equal to?
 
-9 September, 2024
-
-Monday 23rd September, 2024
 
 ! Ex. 4.1.3 (*) - Hello World!
 Write a program that prints a Hello, World! message in the console of a web browser.
+
 ! Ex. 4.1.4 (*) - Greetings to you
 Write a program that
 • asks for the user’s name
