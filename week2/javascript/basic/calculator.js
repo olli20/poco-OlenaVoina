@@ -9,7 +9,7 @@ const rl = readline.createInterface({
 // aks the question
 const askQuestion = (question) => {
     return new Promise((resolve) => {
-        //open interfase
+
         rl.question(question, (answer) => {
             resolve(answer.trim());  //return an answer without extra spaces
         });
@@ -29,8 +29,8 @@ const askOperation = async () => {
             if (!validOperations.includes(operation)) {
                 console.log('Invalid operation. Please enter one of (+, -, *, /).');
             }
-        } catch {
-            console.error(error.message); 
+        } catch (error) {
+            console.error('Error while getting operation: ', error.message); 
         }
     } while (!validOperations.includes(operation));
 
@@ -44,7 +44,7 @@ const askNumber = async (numberName) => {
     // loop till input is valid
     do {
         try {
-            input = await askQuestion(`Enter the ${numberName} number: `);
+            let input = await askQuestion(`Enter the ${numberName} number: `);
             number = Number(input);
 
             // Check if the input is not a valid number
@@ -52,7 +52,7 @@ const askNumber = async (numberName) => {
                 console.log('Please enter a number');
             }
         } catch (error) {    // Handle error
-            console.error(error.message); 
+            console.error('Error while getting number: ', error.message); 
         } 
     } while (isNaN(number));
         
@@ -60,16 +60,15 @@ const askNumber = async (numberName) => {
 }
 
 const getMessage = (operation, number1, number2, result) => {
-    if (operation === '+') {
-        return `The sum of the numbers ${number1} and ${number2} is ${result}`;
-    } else if (operation === "-") {
-        return `The difference of the numbers ${number1} and ${number2} is ${result}`
-    } else if (operation === "*") {
-        return `The result of multiplying the numbers ${number1} and ${number2} is ${result}`
-    } else if (operation === "/") {
-        return `The result of the division of the numbers ${number1} and ${number2} is ${result}` 
-    } else {
-        console.log('Something went wrong'); 
+    switch (operation) {
+        case '+':
+          return `The sum of the numbers ${number1} and ${number2} is ${result}`;
+        case '-':
+          return `The difference of the numbers ${number1} and ${number2} is ${result}`;
+        case '*':
+          return `The result of multiplying the numbers ${number1} and ${number2} is ${result}`;
+        case '/':
+          return `The result of dividing the numbers ${number1} by ${number2} is ${result}`;
     }
 }
 
@@ -85,7 +84,7 @@ const main = async () => {
 
         let result;
 
-        //calculator
+        //calculator logic
         switch (operation) {
             case '+':
                 result = firstNumber + secondNumber;
@@ -107,11 +106,13 @@ const main = async () => {
                 console.log('Something went wrong.');
                 return;
         }  
+    
+        console.log(getMessage(operation, firstNumber, secondNumber, result)); //alert the result
 
-    console.log(getMessage(operation, firstNumber, secondNumber, result)); 
-    } catch {
+    } catch (error) {
         console.error('Something went wrong. Error message: ', error.message);
-        rl.close();
+    } finally {
+        rl.close(); // always close the readline interface
     }
 }
 
