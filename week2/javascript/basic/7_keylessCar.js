@@ -24,16 +24,14 @@ const askAge = async () => {
 
             //validation
             if (isNaN(age)) {
-                console.log('Please enter a number');
-            } else if (age <= 0 || age >= 120) {
-                console.log(`The age should be in the range 1 - 120`); 
+                console.log('Please enter a valid number.');
+            } else if (age <= 0 || age > 120) {
+                console.log('The age should be between 1 and 120.'); 
             }    
         } catch (error) { 
             console.error('Error while getting an age: ', error.message); 
         } 
-    } while (isNaN(age) || age <= 0 || age >= 120);
-
-    rl.close(); 
+    } while (isNaN(age) || age <= 0 || age > 120);
 
     return age;
 }
@@ -41,9 +39,11 @@ const askAge = async () => {
 const keylessCar = async () => {
     const userAge = await askAge();
 
+    rl.close(); // close interface
+
     if (userAge < 18) {
         console.log('Sorry, you are too young to drive this car. Powering off');
-    } else if (userAge === 0) {
+    } else if (userAge === 18) {
         console.log('Congratulations on your first year of driving. Enjoy the ride!');
     } else {
         console.log('Powering On. Enjoy the ride!');
