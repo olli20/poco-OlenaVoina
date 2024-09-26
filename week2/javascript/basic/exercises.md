@@ -45,21 +45,21 @@ c) Evaluate this question: what is a + b in the following code?
 6
 d) What is c equal to?
 
-9 September, 2024
-
-Monday 23rd September, 2024
 
 ! Ex. 4.1.3 (*) - Hello World!
 Write a program that prints a Hello, World! message in the console of a web browser.
+
 ! Ex. 4.1.4 (*) - Greetings to you
 Write a program that
 • asks for the user’s name
 • and then prints a greeting message in the console of a web browser.
+
 ! Ex. 4.1.5 (*) - Even or Odd
 Write a program that asks for the user to input a number:
 • If the number is even, print "The number is even."
 • If the number is odd, print "The number is odd."
 • If it is not a number, print "This is not a number."
+
 ! Ex. 4.1.6 (*) - Age Calculator
 Want to find out how old you’ll be? Calculate it!
 • Use prompt() and alert().
@@ -70,6 +70,7 @@ Want to find out how old you’ll be? Calculate it!
 For example, if you were born in 1988, then in 2026 you’ll be either 37 or 38, depending on what month it is in
 2026.
 Additional Task: Ask for precise dates.
+
 ! Ex. 4.1.7 (*) - Make a keyless car
 This car will only let you drive if you are over 18. Make it do the following:
 • Use prompt() and alert().

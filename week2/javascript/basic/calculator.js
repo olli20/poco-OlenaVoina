@@ -1,90 +1,119 @@
 const readline = require('readline');
 
-// creating interface to prompt through console
+// creating interface to interact with a user in console
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
 
-// wrap rl.question into a Promise
-const askQuestion = (number) => {
-    //open interfase
-  return new Promise((resolve) => {
-    rl.question(number, (answer) => {
-      resolve(answer.trim());  //cut off empty symbols
+// aks the question
+const askQuestion = (question) => {
+    return new Promise((resolve) => {
+
+        rl.question(question, (answer) => {
+            resolve(answer.trim());  //return an answer without extra spaces
+        });
     });
-  });
 }
 
-// keep asking for an operation till valid
+// ask for an operation till valid
 const askOperation = async () => {
     let operation;
     const validOperations = ['+', '-', '*', '/'];
 
     // repeat asking till input is valid
     do {
-        operation = await askQuestion("Choose your operation (+, -, *, /): ");
+        try {
+            operation = await askQuestion('Choose your operation (+, -, *, /): ');
 
-        if (!validOperations.includes(operation)) {
-            console.log("Invalid operation. Please enter one of (+, -, *, /).");
+            if (!validOperations.includes(operation)) {
+                console.log('Invalid operation. Please enter one of (+, -, *, /).');
+            }
+        } catch (error) {
+            console.error('Error while getting operation: ', error.message); 
         }
-
     } while (!validOperations.includes(operation));
 
     return operation;
 }
 
-// keep asking for a number till valid
+// ask for a number till valid
 const askNumber = async (numberName) => {
     let number;
 
-    // Loop till input is valid
+    // loop till input is valid
     do {
-        number = Number(await askQuestion("Enter the " + numberName + " number: "));
+        try {
+            let input = await askQuestion(`Enter the ${numberName} number: `);
+            number = Number(input);
 
-        // Check if the input is not a valid number
-        if (isNaN(number)) {
-            console.log("Please enter a number");
-        }
-
-    } while (isNaN(number)); // Continue asking till a valid number is entered
-
-    return number; // Return the number as a number type
+            // Check if the input is not a valid number
+            if (isNaN(number)) {
+                console.log('Please enter a number');
+            }
+        } catch (error) {    // Handle error
+            console.error('Error while getting number: ', error.message); 
+        } 
+    } while (isNaN(number));
+        
+    return number;
 }
 
-// async function to prompt the user and output the result
+const getMessage = (operation, number1, number2, result) => {
+    switch (operation) {
+        case '+':
+          return `The sum of the numbers ${number1} and ${number2} is ${result}`;
+        case '-':
+          return `The difference of the numbers ${number1} and ${number2} is ${result}`;
+        case '*':
+          return `The result of multiplying the numbers ${number1} and ${number2} is ${result}`;
+        case '/':
+          return `The result of dividing the numbers ${number1} by ${number2} is ${result}`;
+    }
+}
 
 const main = async () => {
     // promt the user for input
-    const operation = await askOperation()
-    const firstNumber = await askNumber("first");
-    const secondNumber = await askNumber("second");
+    try {
+        const operation = await askOperation()
+        const firstNumber = await askNumber('first');
+        const secondNumber = await askNumber('second');
   
-    //close interface
-    rl.close();
+        //close interface
+        rl.close();
 
-    //declaring variables for the result and a message
-    let result;
-    let message = "";
+        let result;
 
-    //calculator
-    if (operation === "+") {
-        result = firstNumber + secondNumber;
-        message = "The sum of the numbers is: " 
-    } else if (operation === "-") {
-        result = firstNumber - secondNumber;
-        message = "The difference of the numbers is: " 
-    } else if (operation === "*") {
-        result = firstNumber * secondNumber;
-        message = "The result of multiplying the numbers is: " 
-    } else if (operation === "/") {
-        result = firstNumber * secondNumber;
-        message = "The result of the division of the numbers is: " 
-    } else {
-        console.log("Something went wrong"); 
+        //calculator logic
+        switch (operation) {
+            case '+':
+                result = firstNumber + secondNumber;
+                break;
+            case '-':
+                result = firstNumber - secondNumber;
+                break;
+            case '*':
+                result = firstNumber * secondNumber;
+                break;
+            case '/':
+                if (secondNumber === 0) {
+                    console.log('Error: Division by zero is not allowed.');
+                    return;
+                }
+                result = firstNumber / secondNumber;
+                break;
+            default:
+                console.log('Something went wrong.');
+                return;
+        }  
+    
+        console.log(getMessage(operation, firstNumber, secondNumber, result)); //alert the result
+
+    } catch (error) {
+        console.error('Something went wrong. Error message: ', error.message);
+    } finally {
+        rl.close(); // always close the readline interface
     }
-
-    console.log(message, result); 
 }
 
 main();
