@@ -98,6 +98,7 @@ const flight = async () => {
     while (fuelLevel > fuelConsumption) {
         fuelLevel = fuelLevel - fuelConsumption;
         altitude = altitude + altitudeStep;
+        
         console.log(`Fuel level: ${fuelLevel} \nCurrent altitude: ${altitude} \n***********************`);
     }
 
@@ -108,7 +109,6 @@ flight();
 
 
 
-// Play with while loop
 // Define three variables for the LaunchCode shuttle:
 // • one for the starting fuel level,
 // • another for the number of astronauts aboard,
