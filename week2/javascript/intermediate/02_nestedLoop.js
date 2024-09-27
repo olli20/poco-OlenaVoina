@@ -1,7 +1,7 @@
 // to run: node 02_nestedLoop.js
+
 const readline = require('readline');
 
-//create readline interface for prompting in cli
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout

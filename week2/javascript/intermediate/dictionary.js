@@ -2,17 +2,17 @@ const dictionary = [
     {
         id: 'en',
         name: 'English',
-        text: 'Hello World!',
+        text: 'Hello, World!',
     },
     {
         id: 'de',
         name: 'Deutsch',
-        text: 'Hallo Welt!',
+        text: 'Hallo, Welt!',
     },
     {
         id: 'uk',
         name: 'Українська',
-        text: 'Привіт Світ!',
+        text: 'Привіт, Світ!',
     },
 ];
 

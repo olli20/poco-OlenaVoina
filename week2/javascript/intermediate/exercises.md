@@ -26,6 +26,7 @@ Write a function named helloWorld that:
 • Returns "Hello, World" for the given language, for at least 3 languages. It should default to returning
 English.
 Call the function for each of the supported languages and log the result to make sure it works.
+
 Ex. 4.2.4 (**) - Retirement calculator ca. 90 min
 Create a program that determines how many years you have left until retirement and the year you can retire.
 It should prompt for your current age and the age you want to retire and display the output as shown in the
@@ -34,6 +35,7 @@ example below.
 • At what age would you like to retire? 65
 • You have 40 years left until you can retire.
 • It’s 2024, so you can retire in 2064.
+
 Ex. 4.2.5 (**) - Sum and Average
 Write a program that asks the user to input five numbers, print the sum and the average of the five numbers.
 

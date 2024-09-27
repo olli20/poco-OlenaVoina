@@ -4,12 +4,10 @@ const dictionary = require('./dictionary');
 
 const availableLanguages = dictionary.map(item => item.id);
 
-// create an interface to interact with the user in CLI
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
-
 
 // aks the question
 const promptUser = (question) => {
