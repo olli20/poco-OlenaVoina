@@ -98,6 +98,7 @@ Initialize two variables to hold the string LaunchCode and the array [1, 5, 'LC1
 construct for loops to accomplish the following tasks:
 a) Print each element of the array to a new line.
 b) Print each character of the string -in reverse order- to a new line.
+
 Ex. 4.1.11 (*) - Play with while loop
 Define three variables for the LaunchCode shuttle:
 • one for the starting fuel level,
@@ -112,6 +113,7 @@ c) Use a final loop to monitor the fuel status and the altitude of the shuttle. 
 fuel level by 100 units for each astronaut aboard. Also, increase the altitude by 50 kilometers. (Hint: The
 loop should end when there is not enough fuel to boost the crew another 50 km, so the fuel level might
 not reach 0).
+
 Ex. 4.1.12 (*) - Fix the code
 The intended behavior is to increment by one but why is this function not working? Can you fix this? (try to
 solve this on paper first and then debug the code)
