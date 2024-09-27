@@ -114,6 +114,8 @@ const main = async () => {
     } finally {
         rl.close(); // always close the readline interface
     }
+
+    return;
 }
 
 main();
