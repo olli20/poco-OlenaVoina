@@ -1,9 +1,10 @@
 const readline = require('readline');
 
-const validLangs = ['en', 'de', 'uk'];
-let userLang;
+const dictionary = require('./dictionary');
 
-// creatinge an interface to interact with the user in CLI
+const availableLanguages = dictionary.map(item => item.id);
+
+// create an interface to interact with the user in CLI
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
@@ -11,7 +12,7 @@ const rl = readline.createInterface({
 
 
 // aks the question
-const askQuestion = (question) => {
+const promptUser = (question) => {
     return new Promise((resolve) => {
         rl.question(question, (answer) => {
             resolve(answer.trim());
@@ -19,50 +20,59 @@ const askQuestion = (question) => {
     });
 }
 
-const askLang = async () => {
-    let input;
+const askForLanguage = async () => {
+    let userInput;
 
     do {
-        input = await askQuestion('Please choose the language (en, de oder uk): ');
-        if (!validLangs.includes(input)) {
-            console.log(`The program does not support ${input}`)
+        try {
+            userInput = await promptUser(`Please choose the language (${availableLanguages.join(', ')}): `);
+            if (!availableLanguages.includes(userInput)) {
+                console.log(`The program does not support ${userInput}`);
+            }
+        } catch (error) {
+            console.error('Error while choosing a language: ', error.message); 
+            return null;
         }
-    } while (!validLangs.includes(input))
+    } while (!availableLanguages.includes(userInput));
 
-    return input;
+    return userInput;
 }
 
-const hello = (lang = 'en') => {
-    switch (lang) {
-        case 'en':
-            console.log('Hello World!');
-            break;
-        case 'de':
-            console.log('Hallo Welt!');
-            break;
-        case 'uk':
-            console.log('Привіт Світ!');
-            break;
-        default:
-            console.log('Something went wrong.');
-            return;
+const getTranslationData = (lang = 'en') => {
+    const languageData = dictionary.find(item => item.id === lang);
+    
+    if (!languageData) {
+        console.log('Language not found, default in English.');
+        return dictionary.find(item => item.id === 'en');
     }
-    return;
+
+    return languageData;
 }
 
 const main = async () => {
-    userLang = await askLang();
-    rl.close();
+    try {
+        const selectedLanguage = await askForLanguage();
 
-    hello(userLang);
-    return;
-}
+        if (!selectedLanguage) {
+            console.log('An unexpected error occurred.');
+            return;
+        }
+
+        const translationData = getTranslationData(selectedLanguage);
+
+        const {name, text} = translationData;
+
+        console.log(`${name}: ${text}`);
+
+    } catch (error) {
+        console.error('An unexpected error occurred:', error.message);
+    } finally {
+        rl.close();
+    }
+};
 
 main();
 
-
-
-// Ex. 4.2.3 (**) - The world translater ca. 30 min
 // Write a function named helloWorld that:
 // • Takes 1 argument, a language code (e.g. "es", "de", "en")
 // • Returns "Hello, World" for the given language, for at least 3 languages. It should default to returning
