@@ -1,0 +1,19 @@
+.inputs {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.animal {
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
+}
+
+.animal:not(:last-child) {
+    margin-right: 10px;
+}
+
+.animal label {
+    margin-bottom: 10px;
+}
