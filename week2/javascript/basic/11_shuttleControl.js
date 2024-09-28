@@ -8,6 +8,8 @@ const mainLegend = 'You are the head of NASA, launching a new shuttle mission. Y
 let fuelLevel; // must be greater than 5000 but less than 30000 and never reach 0
 let astronautsAboard; // 1 - 7
 let altitude = 0;  // 0 till the shuttle is on the ground
+const altitudeStep = 50;
+const delay = 500; // delay for displaying logs
 
 // interface for interaction with user in CLI
 const rl = readline.createInterface({
@@ -27,8 +29,6 @@ const rl = readline.createInterface({
 const askStartFuel = async () => {
     let input;
     let startFuel;
-
-    // Prompt the user to enter the starting fuel level. The loop should continue until the user enters a positive value greater than 5000 but less than 30000.
     
     do {
         try {
@@ -53,9 +53,6 @@ const askAstronautsNumber = async () => {
     let input;
     let astronauts;
 
-    // Use a second loop to query the user for the number of astronauts (up to a maximum of 7). 
-    // Validate the entry by having the loop continue until the user enters an integer from 1 - 7.
-
     do {
         try {
             input = await askQuestion('Enter the number of astronauts: ');
@@ -75,38 +72,57 @@ const askAstronautsNumber = async () => {
     return astronauts;
 }
 
+const displayFlightWithDelay = (logs) => {
+    logs.forEach((log, index) => {
+        setTimeout(() => {
+
+            console.log(`Step: ${log.iteration}, Fuel level: ${log.fuel}, Current altitude: ${log.altitude}`);
+
+        }, index * delay); // delay each log by 500
+    });
+}
+
 // main function
 const flight = async () => {
+    const flightLog = []; // array will store the information about the flight
+
     console.log(mainLegend);
 
-    //ask for fuel
     fuelLevel = await askStartFuel();
-
-    //ask for astronauts
     astronautsAboard = await askAstronautsNumber(); 
 
-    // close the readline interface
     rl.close(); 
 
     console.log('The shuttle has launched without critical issues. \nWe are monitoring the process.')
 
-    // Use a final loop to monitor the fuel status and the altitude of the shuttle. Each iteration, decrease the fuel level by 100 units for each astronaut aboard. Also, increase the altitude by 50 kilometers. (Hint: The loop should end when there is not enough fuel to boost the crew another 50 km, so the fuel level might ot reach 0)
-
     const fuelConsumption = 100 * astronautsAboard;
-    const altitudeStep = 50;
+    let iteration = 1; // counts loop iteration
 
+    // loop proceeds the flight and log it in the array.
     while (fuelLevel > fuelConsumption) {
         fuelLevel = fuelLevel - fuelConsumption;
         altitude = altitude + altitudeStep;
-        
-        console.log(`Fuel level: ${fuelLevel} \nCurrent altitude: ${altitude} \n***********************`);
+
+        // store each iteration in the array as an object with iteration number, fuel level and altitude
+        flightLog.push({
+            iteration: iteration++,
+            fuel: fuelLevel,
+            altitude: altitude,
+        });
     }
 
-    console.log(`Done! The shuttle reached the altitude ${altitude}!`)
+    displayFlightWithDelay(flightLog);
+
+    // time to display all the logs
+    const totalTime = flightLog.length * delay;
+
+    // display the final message after all the logs have been displayed
+    setTimeout(() => {
+        console.log(`Done! The shuttle reached an altitude of ${altitude} kilometers.`);
+    }, totalTime);
 }
 
 flight();
-
 
 
 // Define three variables for the LaunchCode shuttle:
