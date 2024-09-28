@@ -1,4 +1,92 @@
 // Decimal/Binary conversion
+
+const readline = require('readline');
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+  
+// aks a question
+const promptUser = (question) => {
+    return new Promise((resolve) => {
+        rl.question(question, (answer) => {
+            resolve(answer.trim());
+        });
+    });
+}
+
+const askForDecimal = async () => {
+    let input;
+    let number;
+    
+    do {
+        try {
+            input = await promptUser('Please enter a decimal number: ');
+            number = Number(input);
+
+            // validation
+            if (isNaN(number)) {
+                console.log('Not a valid format. Please enter a numeric value.');
+            }     
+        } catch (error) { 
+            console.error('Error while getting a number: ', error.message); 
+        } 
+    } while (isNaN(number));
+        
+    return number;
+};
+
+const askForBinary = async () => {
+    let input;
+    let binary;
+    
+    do {
+        try {
+            input = await promptUser('Please enter a binary number: ');
+            binary = input;
+
+            // validation
+            if (!/^[01]+$/.test(binary)) {
+                console.log('Invalid binary number. Please use only 0 and 1.');
+                binary = false;
+            }     
+        } catch (error) { 
+            console.error('Error while getting a number. ', error.message); 
+        } 
+    } while (binary === false);
+        
+    return input;
+};
+
+const main = async () => {
+    let message;
+    let decimalNumber;
+    let binaryNumber;
+
+    const operation = await promptUser('Enter 1 to convert decimal to binary, enter 2 to convert binary to decimal: ');
+
+    if (operation === '1') {
+        decimalNumber = await askForDecimal();
+        binaryNumber = decimalNumber.toString(2);
+        message = `${decimalNumber} in binary is ${binaryNumber}`;
+    } else if (operation === '2') {
+        binaryNumber = await askForBinary();
+        decimalNumber = parseInt(binaryNumber, 2);
+        message = `${binaryNumber} in decimal is ${decimalNumber}`;
+    } else {
+        console.log('The type of conversion is not chosen. Please restart the program.')
+        rl.close();
+        return;
+    }
+
+    rl.close();
+    console.log(message);
+};
+
+main();
+
+// Decimal/Binary conversion
 // a) Write a program that asks the user for a number and then prints the binary representation of the number.
 // (If you don’t know what a binary representation is, look it up. Computers use binary to represent
 // numbers.)
