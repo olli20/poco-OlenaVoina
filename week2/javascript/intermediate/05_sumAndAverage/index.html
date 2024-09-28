@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum and Average</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>Zoo: Sum and Average</h1>
+    <p>Please enter five numbers</p>
+    <form id="form">
+        <div class="inputs">
+            <div class="animal">
+                <label for="number1">Flamingos</label>
+                <input type="number" id="number1" name="number1" required>
+            </div>
+            <div class="animal">
+                <label for="number2">Monkeys</label>
+                <input type="number" id="number2" name="number2" required>
+            </div>
+            <div class="animal">
+                <label for="number3">Giraffes</label>
+                <input type="number" id="number3" name="number3" required>
+            </div>
+            <div class="animal">
+                <label for="number4">Lions</label>
+                <input type="number" id="number4" name="number4" required>
+            </div>
+            <div class="animal">
+                <label for="number5">Hippos</label>
+                <input type="number" id="number5" name="number5" required>       
+            </div>
+        </div>
+        
+        <button type="submit" id="submit">Calculate</button>
+        <button type="button" id="clear">Clear</button>
+    </form>
+    
+
+    <div id="result"></div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

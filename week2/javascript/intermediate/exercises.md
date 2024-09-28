@@ -3,10 +3,6 @@ Write a program that prints the numbers from 1 to 100. But for multiples of thre
 number and for the multiples of five print "Buzz". For numbers which are multiples of both three and five print
 "FizzBuzz".
 
-11 September, 2024
-
-Monday 23rd September, 2024
-
 ! Ex. 4.2.2 (**)
 Write a program that prints a multiplication table for numbers up to 10. (use nested loops)
 1 1 2 3 4 5 6 7 8 9 10
@@ -45,10 +41,6 @@ a) Write a program that asks the user for a number and then prints the binary re
 numbers.)
 Note: e.g. 25 in binary is 11001
 b) Write another program that does the inverse operation - converting binary to decimal.
-
-12 September, 2024
-
-Monday 23rd September, 2024
 
 Ex. 4.2.7 (**)
 a) Write a program that asks the user for a password and checks if it is valid. The password must
