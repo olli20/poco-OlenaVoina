@@ -73,7 +73,7 @@ const askAstronautsNumber = async () => {
 }
 
 // display flight log with delay
-const displayFlightWithDelay = (logs) => {
+const displayLog = (logs) => {
     logs.forEach((log, index) => {
         setTimeout(() => {
             console.log(`Step: ${log.iteration}, Fuel level: ${log.fuel}, Current altitude: ${log.altitude}`);
@@ -108,7 +108,7 @@ const flight = async () => {
         });
     }
 
-    displayFlightWithDelay(flightLog);
+    displayLog(flightLog);
 
     // time to display all the logs
     const totalTime = flightLog.length * delay;

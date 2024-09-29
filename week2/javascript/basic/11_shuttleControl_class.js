@@ -3,7 +3,7 @@
 const readline = require('readline');
 
 // variables
-const mainLegend = 'You are the head of NASA, launching a new shuttle mission. You must decide how much fuel the shuttle needs for launch and how many astronauts will be on board. The technical constraints require the fuel level at launch to be greater than 5000 gallons but less than 30000 gallons. The shuttle can carry up to 7 astronauts.'
+const legend = 'You are the head of NASA, launching a new shuttle mission. You must decide how much fuel the shuttle needs for launch and how many astronauts will be on board. The technical constraints require the fuel level at launch to be greater than 5000 gallons but less than 30000 gallons. The shuttle can carry up to 7 astronauts.'
 const delay = 500; // delay for displaying logs
 
 const askQuestion = (question) => {
@@ -20,7 +20,7 @@ const askQuestion = (question) => {
     });
 };
 
-const displayFlightWithDelay = (logs) => {
+const displayLog = (logs) => {
     logs.forEach((log, index) => {
         setTimeout(() => {
             console.log(`Step: ${log.iteration}, Fuel level: ${log.fuel}, Current altitude: ${log.altitude}`);
@@ -109,13 +109,14 @@ class Shuttle {
 const flightLaunch = async () => {
     const newShuttle = new Shuttle();
 
-    console.log(mainLegend);
+    console.log(legend);
 
     const log = await newShuttle.flight();
 
     if (log.length > 0) {
         console.log('The shuttle has launched without critical issues. \nWe are monitoring the process.');
-        displayFlightWithDelay(log);
+        
+        displayLog(log);
 
         const totalTime = log.length * delay;
 
