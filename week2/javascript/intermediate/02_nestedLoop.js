@@ -7,6 +7,8 @@ const multTable = () => {
         input: process.stdin,
         output: process.stdout
     });
+
+    rl.write(`Please, enjoy this beautiful multiplication table!\n\n`);
       
     for (let i = 1; i <= 10; i = i + 1) {
         if (i < 10) {
