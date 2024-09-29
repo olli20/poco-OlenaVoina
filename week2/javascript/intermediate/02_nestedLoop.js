@@ -2,12 +2,12 @@
 
 const readline = require('readline');
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
 const multTable = () => {
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+      
     for (let i = 1; i <= 10; i = i + 1) {
         if (i < 10) {
             rl.write(` ${i}  | `);  

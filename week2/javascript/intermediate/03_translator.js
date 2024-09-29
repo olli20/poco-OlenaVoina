@@ -4,19 +4,19 @@ const dictionary = require('./dictionary');
 
 const availableLanguages = dictionary.map(item => item.id);
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
-// aks the question
 const promptUser = (question) => {
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+    
     return new Promise((resolve) => {
         rl.question(question, (answer) => {
+            rl.close();
             resolve(answer.trim());
         });
     });
-}
+};
 
 const askForLanguage = async () => {
     let userInput;

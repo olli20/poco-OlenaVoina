@@ -2,19 +2,19 @@
 
 const readline = require('readline');
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-  
-// aks a question
 const promptUser = (question) => {
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+    
     return new Promise((resolve) => {
         rl.question(question, (answer) => {
+            rl.close();
             resolve(answer.trim());
         });
     });
-}
+};
 
 const askForDecimal = async () => {
     let input;
@@ -76,11 +76,9 @@ const main = async () => {
         message = `${binaryNumber} in decimal is ${decimalNumber}`;
     } else {
         console.log('The type of conversion is not chosen. Please restart the program.')
-        rl.close();
         return;
     }
 
-    rl.close();
     console.log(message);
 };
 

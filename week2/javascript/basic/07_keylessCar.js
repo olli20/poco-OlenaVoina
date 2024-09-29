@@ -1,17 +1,18 @@
 const readline = require('readline');
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
 const askQuestion = (question) => {
-    return new Promise((resolve) => {
-      rl.question(question, (answer) => {
-        resolve(answer.trim());  
-      });
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
     });
-}
+    
+    return new Promise((resolve) => {
+        rl.question(question, (answer) => {
+            rl.close();
+            resolve(answer.trim());
+        });
+    });
+};
 
 const askAge = async () => {
     let input;
@@ -38,8 +39,6 @@ const askAge = async () => {
 
 const keylessCar = async () => {
     const userAge = await askAge();
-
-    rl.close(); // close interface
 
     if (userAge < 18) {
         console.log('Sorry, you are too young to drive this car. Powering off');

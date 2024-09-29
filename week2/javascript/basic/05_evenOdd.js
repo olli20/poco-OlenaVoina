@@ -1,23 +1,21 @@
 const readline = require('readline');
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
 const askQuestion = (question) => {
-    return new Promise((resolve) => {
+  const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout
+  });
+  
+  return new Promise((resolve) => {
       rl.question(question, (answer) => {
-        resolve(answer.trim());  
+          rl.close();
+          resolve(answer.trim());
       });
-    });
-}
+  });
+};
 
 const askNumber = async () => {
     const input = await askQuestion('Please provide a number: ');
-
-    //close readline interface as we are done with the input
-    rl.close(); 
 
     const convertedInput = Number(input);
     

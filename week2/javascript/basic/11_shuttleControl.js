@@ -1,4 +1,4 @@
-// the task description can be found at the bottom of the code
+// to run: node 11_shuttleControl.js ()
 
 const readline = require('readline');
 
@@ -11,19 +11,19 @@ let altitude = 0;  // 0 till the shuttle is on the ground
 const altitudeStep = 50;
 const delay = 500; // delay for displaying logs
 
-// interface for interaction with user in CLI
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
-  
-  const askQuestion = (question) => {
-      return new Promise((resolve) => {
+const askQuestion = (question) => {
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+    
+    return new Promise((resolve) => {
         rl.question(question, (answer) => {
-          resolve(answer.trim());  
+            rl.close();
+            resolve(answer.trim());
         });
-      });
-  }
+    });
+};
 
 // functions to handle user input and validation
 const askStartFuel = async () => {
@@ -72,12 +72,11 @@ const askAstronautsNumber = async () => {
     return astronauts;
 }
 
+// display flight log with delay
 const displayFlightWithDelay = (logs) => {
     logs.forEach((log, index) => {
         setTimeout(() => {
-
             console.log(`Step: ${log.iteration}, Fuel level: ${log.fuel}, Current altitude: ${log.altitude}`);
-
         }, index * delay); // delay each log by 500
     });
 }
@@ -90,8 +89,6 @@ const flight = async () => {
 
     fuelLevel = await askStartFuel();
     astronautsAboard = await askAstronautsNumber(); 
-
-    rl.close(); 
 
     console.log('The shuttle has launched without critical issues. \nWe are monitoring the process.')
 
@@ -123,18 +120,3 @@ const flight = async () => {
 }
 
 flight();
-
-
-// Define three variables for the LaunchCode shuttle:
-// • one for the starting fuel level,
-// • another for the number of astronauts aboard,
-// • and the third for the altitude the shuttle reaches.
-// Construct while loops to do the following:
-// a) Prompt the user to enter the starting fuel level. The loop should continue until the user enters a positive
-// value greater than 5000 but less than 30000.
-// b) Use a second loop to query the user for the number of astronauts (up to a maximum of 7). Validate the
-// entry by having the loop continue until the user enters an integer from 1 - 7.
-// c) Use a final loop to monitor the fuel status and the altitude of the shuttle. Each iteration, decrease the
-// fuel level by 100 units for each astronaut aboard. Also, increase the altitude by 50 kilometers. (Hint: The
-// loop should end when there is not enough fuel to boost the crew another 50 km, so the fuel level might
-// not reach 0).
