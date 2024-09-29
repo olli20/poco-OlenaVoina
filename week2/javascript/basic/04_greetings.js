@@ -1,18 +1,18 @@
 const readline = require('readline');
 
-//create readline interface for prompting in cli
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
-const prompt = (question) => {
-    return new Promise((resolve) => {
+const askQuestion = (question) => {
+  const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout
+  });
+  
+  return new Promise((resolve) => {
       rl.question(question, (answer) => {
-        resolve(answer.trim());  
+          rl.close();
+          resolve(answer.trim());
       });
-    });
-}
+  });
+};
 
 const getMessage = () => {
     const currentTime = new Date().getHours();
@@ -31,9 +31,7 @@ const getMessage = () => {
 }
 
 const greeting = async () => {
-    const name = await prompt('Hello! What is yor name? ');
-    
-    rl.close();
+    const name = await askQuestion('Hello! What is yor name? ');
     
     const message = getMessage();
     console.log(`${message}, ${name}!`);

@@ -3,26 +3,26 @@
 
 const readline = require('readline');
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-  
-// aks a question
-const promptUser = (question) => {
-    return new Promise((resolve) => {
-        rl.question(question, (answer) => {
-            resolve(answer.trim());
-        });
-    });
-}
-
 // variables
 const currentYear = new Date().getFullYear();
 let currentAge;
 let retirementAge;
 let yearsTillRetirement;
 let retirementYear;
+
+const promptUser = (question) => {
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+    
+    return new Promise((resolve) => {
+        rl.question(question, (answer) => {
+            rl.close();
+            resolve(answer.trim());
+        });
+    });
+};
 
 // function that returns an async function to ask for a specific age and validate
 const askAge = (question, topic, min, max = 120) => {
@@ -59,8 +59,6 @@ const main = async () => {
     const askRetirementAge = askAge("At what age do you want to retire? ", "retirement age", currentAge, 120);
 
     retirementAge = await askRetirementAge();
-
-    rl.close();
 
     // calculating years until retirement
     yearsTillRetirement = retirementAge - currentAge;

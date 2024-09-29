@@ -1,17 +1,18 @@
 const readline = require('readline');
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
 const askQuestion = (question) => {
-    return new Promise((resolve) => {
-      rl.question(question, (answer) => {
-        resolve(answer.trim());  
-      });
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
     });
-}
+    
+    return new Promise((resolve) => {
+        rl.question(question, (answer) => {
+            rl.close();
+            resolve(answer.trim());
+        });
+    });
+};
 
 const askBirthYear = async () => {
     const currentYear = new Date().getFullYear();
@@ -64,9 +65,6 @@ const askFutureYear = async () => {
 const calculateAge = async () => {
     const birthYear = await askBirthYear();
     const futureYear = await askFutureYear();
-
-    // close the readline interface
-    rl.close(); 
 
     // calculate the difference
     const ageInFuture = futureYear - birthYear;
