@@ -1,3 +1,5 @@
+// to run: node 05_evenOdd.js
+
 const readline = require('readline');
 
 const askQuestion = (question) => {
@@ -16,7 +18,6 @@ const askQuestion = (question) => {
 
 const askNumber = async () => {
     const input = await askQuestion('Please provide a number: ');
-
     const convertedInput = Number(input);
     
     if (isNaN(convertedInput)) {

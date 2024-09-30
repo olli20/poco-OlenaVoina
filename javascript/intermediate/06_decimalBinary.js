@@ -1,4 +1,6 @@
 // Decimal/Binary conversion
+// to run: 06_decimalBinary.js
+
 
 const readline = require('readline');
 
@@ -21,19 +23,13 @@ const askForDecimal = async () => {
     let number;
     
     do {
-        try {
-            input = await promptUser('Please enter a decimal number: ');
-            number = Number(input);
-
-            // validation
-            if (isNaN(number)) {
-                console.log('Not a valid format. Please enter a numeric value.');
-            }     
-        } catch (error) { 
-            console.error('Error while getting a number: ', error.message); 
-        } 
-    } while (isNaN(number));
-        
+        input = await promptUser('Please enter a decimal number: ');
+        number = Number(input);
+        if (isNaN(number)) {
+            console.log('Not a valid format. Please enter a numeric value.');
+        }
+    } while (isNaN(number));     
+    
     return number;
 };
 
@@ -42,7 +38,6 @@ const askForBinary = async () => {
     let binary;
     
     do {
-        try {
             input = await promptUser('Please enter a binary number: ');
             binary = input;
 
@@ -50,10 +45,7 @@ const askForBinary = async () => {
             if (!/^[01]+$/.test(binary)) {
                 console.log('Invalid binary number. Please use only 0 and 1.');
                 binary = false;
-            }     
-        } catch (error) { 
-            console.error('Error while getting a number. ', error.message); 
-        } 
+            } 
     } while (binary === false);
         
     return input;

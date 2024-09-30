@@ -14,19 +14,11 @@ const askQuestion = (question) => {
     
     return new Promise((resolve) => {
         rl.question(question, (answer) => {
-            rl.close(); // close after getting the answer
+            rl.close(); // close readline after getting the answer
             resolve(answer.trim());
         });
     });
 };
-
-const displayLog = (logs) => {
-    logs.forEach((log, index) => {
-        setTimeout(() => {
-            console.log(`Step: ${log.iteration}, Fuel level: ${log.fuel}, Current altitude: ${log.altitude}`);
-        }, index * delay); // delay each log by 500
-    });
-}
 
 class Shuttle {
     constructor(altitudeStep = 50) {
@@ -34,6 +26,8 @@ class Shuttle {
         this.altitudeStep = altitudeStep;
         this.fuelLevel = 0;
         this.astronautsAboard = 0;
+        this.fuelConsumption = 0; 
+        this.fuelProAstronaut = 100;
         this.flightLog = [];
     }
 
@@ -42,7 +36,6 @@ class Shuttle {
         let startFuel;
         
         do {
-            try {
                 input = await askQuestion('Please enter the starting fuel level: ');
                 startFuel = Number(input);
 
@@ -51,10 +44,6 @@ class Shuttle {
                 } else if (startFuel <= 5000 || startFuel >= 30000) {
                     console.log('The amount of fuel at launch must be greater than 5000 but less than 30000.'); 
                 }    
-            } catch (error) { 
-                console.error('Error while getting the starting fuel level. The program will exit. ', error.message); 
-                process.exit(1); // exit program
-            } 
         } while (isNaN(startFuel) || startFuel <= 5000 || startFuel >= 30000);
             
         this.fuelLevel = startFuel;
@@ -65,22 +54,18 @@ class Shuttle {
         let astronauts;
     
         do {
-            try {
-                input = await askQuestion('Enter the number of astronauts: ');
-                astronauts = Number(input);
-    
-                if (isNaN(astronauts)) {
-                    console.log('Not a valid format. Please enter a numeric value.');
-                } else if (astronauts < 1 || astronauts > 7) {
-                    console.log('Please enter a number between 1 and 7.');
-                }
-            } catch (error) { 
-                console.error('Error while getting the astronauts number. The program will exit. ', error.message);
-                process.exit(1); // exit program
-            } 
+            input = await askQuestion('Enter the number of astronauts: ');
+            astronauts = Number(input);
+
+            if (isNaN(astronauts)) {
+                console.log('Not a valid format. Please enter a numeric value.');
+            } else if (astronauts < 1 || astronauts > 7) {
+                console.log('Please enter a number between 1 and 7.');
+            }
         } while (isNaN(astronauts) || astronauts < 1 || astronauts > 7);
-            
+
         this.astronautsAboard = astronauts;
+        this.fuelConsumption = this.fuelProAstronaut * this.astronautsAboard;
     }
 
 
@@ -88,11 +73,10 @@ class Shuttle {
         await this.askStartFuel();
         await this.askAstronautsNumber(); 
 
-        const fuelConsumption = 100 * this.astronautsAboard;
         let iteration = 1; // counts loop iteration
 
-        while (this.fuelLevel > fuelConsumption) {
-            this.fuelLevel = this.fuelLevel - fuelConsumption;
+        while (this.fuelLevel > this.fuelConsumption) {
+            this.fuelLevel = this.fuelLevel - this.fuelConsumption;
             this.altitude = this.altitude + this.altitudeStep;
 
             this.flightLog.push({
@@ -103,7 +87,14 @@ class Shuttle {
         }
         return this.flightLog;
     }
-}
+};
+
+// new variant of handling the dalay 
+function sleep(ms) {
+    return new Promise((resolve) => {
+        setTimeout(resolve, ms);
+    });
+};
 
 // main function
 const flightLaunch = async () => {
@@ -111,22 +102,22 @@ const flightLaunch = async () => {
 
     console.log(legend);
 
-    const log = await newShuttle.flight();
+    const logs = await newShuttle.flight();
 
-    if (log.length > 0) {
+    if (logs.length > 0) {
         console.log('The shuttle has launched without critical issues. \nWe are monitoring the process.');
-        
-        displayLog(log);
 
-        const totalTime = log.length * delay;
+        for (let log of logs) {
+            console.log(`Step: ${log.iteration}, Fuel level: ${log.fuel}, Current altitude: ${log.altitude}`);
+            await sleep(delay);
+        }
+            
+        console.log(`Done! The shuttle reached an altitude of ${newShuttle.altitude} kilometers.`);
 
-        setTimeout(() => {
-            console.log(`Done! The shuttle reached an altitude of ${newShuttle.altitude} kilometers.`);
-        }, totalTime + delay);
     } else {
         console.log('Oops. Something went wrong.');
         return;
     }
-}
+};
 
 flightLaunch();
