@@ -1,17 +1,18 @@
-const readline = require('readline');
+// to run: node calculator.js
 
-// creating interface to interact with a user in console
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
+const readline = require('readline');
 
 // aks the question
 const askQuestion = (question) => {
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+      });
+      
     return new Promise((resolve) => {
-
         rl.question(question, (answer) => {
-            resolve(answer.trim());  //return an answer without extra spaces
+            rl.close();
+            resolve(answer.trim());
         });
     });
 }
@@ -21,16 +22,11 @@ const askOperation = async () => {
     let operation;
     const validOperations = ['+', '-', '*', '/'];
 
-    // repeat asking till input is valid
     do {
-        try {
-            operation = await askQuestion('Choose your operation (+, -, *, /): ');
+        operation = await askQuestion('Choose your operation (+, -, *, /): ');
 
-            if (!validOperations.includes(operation)) {
-                console.log('Invalid operation. Please enter one of (+, -, *, /).');
-            }
-        } catch (error) {
-            console.error('Error while getting operation: ', error.message); 
+        if (!validOperations.includes(operation)) {
+            console.log('Invalid operation. Please enter one of (+, -, *, /).');
         }
     } while (!validOperations.includes(operation));
 
@@ -43,17 +39,12 @@ const askNumber = async (numberName) => {
 
     // loop till input is valid
     do {
-        try {
-            let input = await askQuestion(`Enter the ${numberName} number: `);
-            number = Number(input);
+        let input = await askQuestion(`Enter the ${numberName} number: `);
+        number = Number(input);
 
-            // Check if the input is not a valid number
-            if (isNaN(number)) {
-                console.log('Please enter a number');
-            }
-        } catch (error) {    // Handle error
-            console.error('Error while getting number: ', error.message); 
-        } 
+        if (isNaN(number)) {
+            console.log('Please enter a number');
+        }
     } while (isNaN(number));
         
     return number;
@@ -73,18 +64,15 @@ const getMessage = (operation, number1, number2, result) => {
 }
 
 const main = async () => {
-    // promt the user for input
     try {
+        let result;
+
+        // promt the user for input
         const operation = await askOperation()
         const firstNumber = await askNumber('first');
         const secondNumber = await askNumber('second');
-  
-        //close interface
-        rl.close();
 
-        let result;
-
-        //calculator logic
+        // calculator logic
         switch (operation) {
             case '+':
                 result = firstNumber + secondNumber;
@@ -107,15 +95,12 @@ const main = async () => {
                 return;
         }  
     
-        console.log(getMessage(operation, firstNumber, secondNumber, result)); //alert the result
+        console.log(getMessage(operation, firstNumber, secondNumber, result)); // display the result
 
     } catch (error) {
         console.error('Something went wrong. Error message: ', error.message);
-    } finally {
-        rl.close(); // always close the readline interface
-    }
-
     return;
+    }
 }
 
 main();

@@ -1,3 +1,5 @@
+//to run: 07_password.js
+
 const readline = require('readline');
 
 const passwordRegex = /^(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*\d)[^\s]{8,}$/; // /...../  - Regular expression

@@ -1,15 +1,18 @@
 const readline = require('readline');
 
-// creating interface to prompt through console
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
 
 // wrap rl.question into a Promise
 const askQuestion = (prompt) => {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+
   return new Promise((resolve) => {
-    rl.question(prompt, resolve);
+    rl.question(prompt, (answer) => {
+      rl.close();
+      resolve(answer.trim());  
+    });
   });
 }
 
@@ -17,8 +20,6 @@ const askQuestion = (prompt) => {
 const main = async () => {
   const firstNumber = await askQuestion("Write your first number: ");
   const lastNumber = await askQuestion("Write your last number: ");
-
-  rl.close();
 
   const sum = Number(firstNumber) + Number(lastNumber);
   console.log("The sum is: ", sum); 

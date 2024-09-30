@@ -54,19 +54,14 @@ const askAstronautsNumber = async () => {
     let astronauts;
 
     do {
-        try {
-            input = await askQuestion('Enter the number of astronauts: ');
-            astronauts = Number(input);
+        input = await askQuestion('Enter the number of astronauts: ');
+        astronauts = Number(input);
 
-            //validation
-            if (isNaN(astronauts)) {
-                console.log('Not a valid format. Please enter a numeric value.');
-            } else if (astronauts < 1 || astronauts > 7) {
-                console.log('Please enter a number between 1 and 7.'); 
-            }    
-        } catch (error) { 
-            console.error('Error while getting the astronauts number. ', error.message); 
-        } 
+        if (isNaN(astronauts)) {
+            console.log('Not a valid format. Please enter a numeric value.');
+        } else if (astronauts < 1 || astronauts > 7) {
+            console.log('Please enter a number between 1 and 7.'); 
+        }    
     } while (isNaN(astronauts) || astronauts < 1 || astronauts > 7);
         
     return astronauts;

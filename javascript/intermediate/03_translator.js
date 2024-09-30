@@ -1,3 +1,5 @@
+// to run: 03_translator.js
+
 const readline = require('readline');
 
 const dictionary = require('./dictionary');

@@ -31,19 +31,15 @@ const askAge = (question, topic, min, max = 120) => {
         let age;
         
         do {
-            try {
-                input = await promptUser(question);
-                age = Number(input);
+            input = await promptUser(question);
+            age = Number(input);
 
-                //validation
-                if (isNaN(age)) {
-                    console.log(`The input expects a number.`);
-                } else if (age < min || age > max) {
-                    console.log(`The ${topic} should be between ${min} and ${max}.`); 
-                }    
-            } catch (error) { 
-                console.error(`Error while getting ${topic}: `, error.message); 
-            } 
+            //validation
+            if (isNaN(age)) {
+                console.log(`The input expects a number.`);
+            } else if (age < min || age > max) {
+                console.log(`The ${topic} should be between ${min} and ${max}.`); 
+            }    
         } while (isNaN(age) || age < min || age > max);
             
         return age;

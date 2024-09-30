@@ -1,3 +1,5 @@
+// to run: node 04_greetings.js
+
 const readline = require('readline');
 
 const askQuestion = (question) => {
@@ -28,13 +30,13 @@ const getMessage = () => {
       } else {
         return "Hello";
       }
-}
+};
 
 const greeting = async () => {
     const name = await askQuestion('Hello! What is yor name? ');
     
     const message = getMessage();
     console.log(`${message}, ${name}!`);
-}
+};
 
 greeting();

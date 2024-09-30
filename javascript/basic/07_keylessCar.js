@@ -1,3 +1,5 @@
+// to run: node 07_keylessCar.js
+
 const readline = require('readline');
 
 const askQuestion = (question) => {
@@ -19,19 +21,14 @@ const askAge = async () => {
     let age;
 
     do {
-        try {
-            input = await askQuestion('What is your age? ');
-            age = Number(input);
+        input = await askQuestion('What is your age? ');
+        age = Number(input);
 
-            //validation
-            if (isNaN(age)) {
-                console.log('Please enter a valid number.');
-            } else if (age <= 0 || age > 120) {
-                console.log('The age should be between 1 and 120.'); 
-            }    
-        } catch (error) { 
-            console.error('Error while getting an age: ', error.message); 
-        } 
+        if (isNaN(age)) {
+            console.log('Please enter a valid number.');
+        } else if (age <= 0 || age > 120) {
+            console.log('The age should be between 1 and 120.'); 
+        }    
     } while (isNaN(age) || age <= 0 || age > 120);
 
     return age;

@@ -1,3 +1,5 @@
+// to run: node 06_ageCalculator.js
+
 const readline = require('readline');
 
 const askQuestion = (question) => {
@@ -20,19 +22,15 @@ const askBirthYear = async () => {
     let birthYear;
 
     do {
-        try {
-            input = await askQuestion('I was born in (YYYY) ');
-            birthYear = Number(input);
+        input = await askQuestion('In what year were you born (YYYY)? ');
+        birthYear = Number(input);
 
-            //validation
-            if (isNaN(birthYear)) {
-                console.log('Not a valid year format');
-            } else if (birthYear < 1900 || birthYear > currentYear) {
-                console.log(`The year of birth should be in the range 1900 - ${currentYear}`); 
-            }    
-        } catch (error) { 
-            console.error('Error while getting a year: ', error.message); 
-        } 
+        //validation
+        if (isNaN(birthYear)) {
+            console.log('Not a valid year format');
+        } else if (birthYear < 1900 || birthYear > currentYear) {
+            console.log(`The year of birth should be in the range 1900 - ${currentYear}`); 
+        }    
     } while (isNaN(birthYear) || birthYear < 1900 || birthYear > currentYear);
         
     return birthYear;
@@ -45,7 +43,7 @@ const askFutureYear = async () => {
 
     do {
         try {
-            input = await askQuestion('The future year (YYYY) is ');;
+            input = await askQuestion('What is the future year (YYYY)? ');;
             futureYear = Number(input);
 
             //validation
