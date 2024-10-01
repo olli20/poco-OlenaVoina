@@ -1,7 +1,6 @@
 // Decimal/Binary conversion
 // to run: 06_decimalBinary.js
 
-
 const readline = require('readline');
 
 const promptUser = (question) => {
@@ -9,7 +8,6 @@ const promptUser = (question) => {
         input: process.stdin,
         output: process.stdout
     });
-    
     return new Promise((resolve) => {
         rl.question(question, (answer) => {
             rl.close();
@@ -38,14 +36,14 @@ const askForBinary = async () => {
     let binary;
     
     do {
-            input = await promptUser('Please enter a binary number: ');
-            binary = input;
+        input = await promptUser('Please enter a binary number: ');
+        binary = input;
 
-            // validation
-            if (!/^[01]+$/.test(binary)) {
-                console.log('Invalid binary number. Please use only 0 and 1.');
-                binary = false;
-            } 
+        // validation
+        if (!/^[01]+$/.test(binary)) {
+            console.log('Invalid binary number. Please use only 0 and 1.');
+            binary = false;
+        } 
     } while (binary === false);
         
     return input;

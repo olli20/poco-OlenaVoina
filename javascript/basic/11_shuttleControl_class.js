@@ -11,7 +11,6 @@ const askQuestion = (question) => {
         input: process.stdin,
         output: process.stdout
     });
-    
     return new Promise((resolve) => {
         rl.question(question, (answer) => {
             rl.close(); // close readline after getting the answer
@@ -34,7 +33,7 @@ class Shuttle {
     async askStartFuel() {
         let input;
         let startFuel;
-        
+
         do {
                 input = await askQuestion('Please enter the starting fuel level: ');
                 startFuel = Number(input);
@@ -45,7 +44,7 @@ class Shuttle {
                     console.log('The amount of fuel at launch must be greater than 5000 but less than 30000.'); 
                 }    
         } while (isNaN(startFuel) || startFuel <= 5000 || startFuel >= 30000);
-            
+ 
         this.fuelLevel = startFuel;
     }
 
@@ -67,7 +66,6 @@ class Shuttle {
         this.astronautsAboard = astronauts;
         this.fuelConsumption = this.fuelProAstronaut * this.astronautsAboard;
     }
-
 
     async flight () {
         await this.askStartFuel();
@@ -98,11 +96,11 @@ function sleep(ms) {
 
 // main function
 const flightLaunch = async () => {
-    const newShuttle = new Shuttle();
+    const myShuttle = new Shuttle();
 
     console.log(legend);
 
-    const logs = await newShuttle.flight();
+    const logs = await myShuttle.flight();
 
     if (logs.length > 0) {
         console.log('The shuttle has launched without critical issues. \nWe are monitoring the process.');
@@ -112,8 +110,7 @@ const flightLaunch = async () => {
             await sleep(delay);
         }
             
-        console.log(`Done! The shuttle reached an altitude of ${newShuttle.altitude} kilometers.`);
-
+        console.log(`Done! The shuttle reached an altitude of ${myShuttle.altitude} kilometers.`);
     } else {
         console.log('Oops. Something went wrong.');
         return;

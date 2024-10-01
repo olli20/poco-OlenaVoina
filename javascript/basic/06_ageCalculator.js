@@ -42,18 +42,14 @@ const askFutureYear = async () => {
     let futureYear;
 
     do {
-        try {
-            input = await askQuestion('What is the future year (YYYY)? ');;
-            futureYear = Number(input);
+        input = await askQuestion('What is the future year (YYYY)? ');;
+        futureYear = Number(input);
 
-            //validation
-            if (isNaN(futureYear)) {
-                console.log('Not a valid year format');
-            } else if (futureYear <= currentYear) {
-                console.log(`The future year is the year starting from ${currentYear}.`); 
-            }    
-        } catch (error) { 
-            console.error('Error while getting a year: ', error.message); 
+        //validation
+        if (isNaN(futureYear)) {
+            console.log('Not a valid year format');
+        } else if (futureYear <= currentYear) {
+            console.log(`The future year is the year starting from ${currentYear}.`); 
         } 
     } while (isNaN(futureYear) || futureYear <= currentYear);
         
