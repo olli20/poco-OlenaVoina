@@ -35,7 +35,6 @@ document.getElementById('submit').addEventListener('click', event => {
 
 document.getElementById('clear').addEventListener('click', event => {
     event.preventDefault();
-
     document.getElementById('form').reset();
 
     document.getElementById('result').innerHTML = '';

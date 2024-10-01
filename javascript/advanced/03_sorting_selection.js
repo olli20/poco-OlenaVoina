@@ -1,3 +1,5 @@
+// in progress
+
 const myArray = [1, "wer", 4, 5];
 
 const selectionSort = (array) => {
