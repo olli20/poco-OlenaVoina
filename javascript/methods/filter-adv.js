@@ -12,3 +12,7 @@ const filteredArray = myArray.filter(function(element) {
 }, externalObject);
 
 console.log(filteredArray); // Output: [25, 30, 40]
+
+const filteredArray2 = myArray.filter(function(element) {
+    return element > externalObject[0];  // Directly use externalObject
+});
