@@ -18,8 +18,6 @@ const removeDuplicates = (array) => {
 
 const k = removeDuplicates(nums);
 
-// console.log the result
-
 if (k) {
     console.log("The array without duplicates: ", nums);
     console.log(`Its length (K): ${k}`);

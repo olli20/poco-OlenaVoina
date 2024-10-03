@@ -10,11 +10,9 @@ const removeDuplicates = (array) => {
             } 
         }
     return array.length;
-}
+};
 
 const k = removeDuplicates(nums);
-
-// console.log the result
 
 console.log("The array without duplicates: ", nums);
 console.log(`Its length (K): ${k}`);

@@ -4,11 +4,10 @@ const removeDuplicates = (array) => {
     const originalLength = array.length;
 
     for (let i = 0; i < originalLength; i++) {
-        if (array[i] !== array[i+1]) {
+        if (array[i] !== array[i + 1]) {
             array.push(array[i]);
-        } 
+        }; 
     };
-
     array.splice(0, originalLength);
     return array.length;
 }
