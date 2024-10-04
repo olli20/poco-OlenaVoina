@@ -20,14 +20,16 @@ const askQuestion = (question) => {
 };
 
 class Shuttle {
+    altitude = 0;
+    fuelLevel = 0;
+    astronautsAboard = 0;
+    fuelConsumption = 0;
+    fuelProAstronaut = 100;
+    flightLog = [];
+    altitudeStep;
+
     constructor(altitudeStep = 50) {
-        this.altitude = 0;
         this.altitudeStep = altitudeStep;
-        this.fuelLevel = 0;
-        this.astronautsAboard = 0;
-        this.fuelConsumption = 0; 
-        this.fuelProAstronaut = 100;
-        this.flightLog = [];
     }
 
     async askStartFuel() {

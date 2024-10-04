@@ -18,7 +18,7 @@ const discountFields = {
     getDiscountPrice() {
         this.finalPrice = Math.round(this.originalPrice * (1 - this.discountPercentage / 100));
     }
-}
+};
 
 // Function to add discount fields to products
 const addDiscountFeature = (array) => {
