@@ -45,6 +45,8 @@ p {
     margin-bottom: 50px;
 }
 
+/* navigation */
+
 .navigation {
     display: flex;
     gap: 20px;
@@ -68,6 +70,16 @@ p {
     background-color: rgb(175, 175, 175);
     cursor:pointer;
     transform: scale(1.05);
+}
+
+/* page 4 */
+
+.list {
+    font-size: 20px;
+}
+
+.list li:not(:last-child) {
+    margin-bottom: 10px;
 }
 
 .container {
@@ -106,4 +118,9 @@ nav {
 
 .menu-item:not(:last-child) {
     margin-right: 30px;
+}
+
+.code-container {
+    display: flex;
+    gap: 10px;
 }
