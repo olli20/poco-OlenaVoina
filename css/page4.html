@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Some CSS</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./styles/styles.css">
 </head>
 <body>
     <main>
-        <h1>Selector :not(:last-child)</h1>
-        <p></p>
+        <h1>:not(:last-child) selector</h1>
+        <ul class="list">
+            <li>Used to add margin between grouped elements</li>
+            <li>Prevents margins on the last element</li>
+            <li>Provides better control over the common container.</li>
+        </ul>
         <div class="container">
             <div class="flex-container">
                 <div class="menu-item first">item 1</div>
@@ -18,9 +22,32 @@
                 <div class="menu-item fourth">item 4</div>
             </div>
         </div>
-        <nav class="navigation">
-            <a href="./page3.html" class="button">back</a>
-        </nav>
+        <div class="code-container">
+            <pre><code>
+        .list {
+            font-size: 20px;
+        }
+        
+        .list li:not(:last-child) {
+            margin-bottom: 10px;
+        }
+            </code></pre>
+            <pre><code>
+        .menu-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /.../   
+        }
+
+        .menu-item:not(:last-child) {
+            margin-right: 30px;
+        }
+            </code></pre>
+        </div>
     </main>
+    <nav class="navigation">
+        <a href="./page3.html" class="button">back</a>
+    </nav>
 </body>
 </html>
