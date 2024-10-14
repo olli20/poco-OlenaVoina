@@ -1,0 +1,81 @@
+*{
+    font-family: "Space Grotesk", sans-serif;
+font-optical-sizing: auto;
+font-style: normal;
+}
+body{
+    margin: 0px;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+
+    padding: 0px 50px;
+
+    background-color: bisque;
+
+    /*Make this header always stick to the top of the page*/
+}
+
+h1{
+    /*Make this header overlay on the image and center it vertically and horizontally (do not use flexbox)*/
+    /*also style it*/
+}
+
+h2{
+    /*position this element in a way that it scrolls with the content 
+    to the top of the page and then let the images flow behind it*/
+
+    /*also style it*/
+}
+
+#headerText{
+    /*That text goes below the h1 element*/
+}
+
+button{
+    height: 30px;
+    background-color: lightblue;
+    color: white;
+    border: none;
+
+    /*This button goes next to the header Text*/
+}
+
+button:hover{
+    background-color: coral;
+}
+
+nav{
+    display: flex;
+    justify-content: space-around;
+    width: 50vw;
+}
+
+#header-img{
+    width: 100vw;
+    height: 400px;
+    object-fit: cover;
+}
+
+article{
+    height: 50px;
+    width: 50px;
+    background-color: green;
+}
+
+#gallery{
+    background-color: antiquewhite;
+    text-align: center;
+    padding: 50px 0px;
+}
+
+.galleryImg{ /*Option challenge: Spread the images out "radomly", stack then on top of each other etc.*/
+    display: block;
+    object-fit: cover;
+    width: 50vw;
+    height: 300px;
+    margin: auto;
+    margin-bottom: 50px;
+}
