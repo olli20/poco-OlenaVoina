@@ -1,29 +1,45 @@
-*{
+* {
     font-family: "Space Grotesk", sans-serif;
-font-optical-sizing: auto;
-font-style: normal;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
-body{
+
+html {
+    margin: 0;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
     margin: 0px;
 }
 
-header{
+header {
     display: flex;
     justify-content: space-between;
-
     padding: 0px 50px;
-
     background-color: bisque;
-
-    /*Make this header always stick to the top of the page*/
+    position: sticky; /*Make this header always stick to the top of the page*/
+    top: 0;
+    z-index: 1000;
 }
 
-h1{
+#picture {
+    position: relative;
+    height: 400px;
+}
+
+h1 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     /*Make this header overlay on the image and center it vertically and horizontally (do not use flexbox)*/
     /*also style it*/
 }
 
-h2{
+h2 {
+    position: relative;
     /*position this element in a way that it scrolls with the content 
     to the top of the page and then let the images flow behind it*/
 
