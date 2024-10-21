@@ -10,14 +10,11 @@
 // of the iteration.
 
 let title = document.getElementById("heading");
-// let list = document.getElementById("list");
+let pafagraf = document.getElementById("pafagraf");
+let link = document.getElementById("link");
 
-// const content = ["first item", "second item", "third item"];
 
+for (let i = 1; i < 2; i ++) {
+  title.textContent += i.toString(); 
+}
 
-let list = document.getElementById("list");
-let content = list.childNodes;
-console.log(content)
-content.forEach(function(el){
-  el.textContent = "new text";
-}); 

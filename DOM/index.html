@@ -7,10 +7,34 @@
 </head>
 <body>
     <h1 id="heading">Heading</h1>
-    <ul id="list">
+    <!-- <ul id="list">
         <li></li>
         <li></li>
         <li></li>
-    </ul>   
+    </ul> -->
+    <p id="pafagraf">Addind something</p>
+    <a href="" id="link">link text</a>
+    <script>
+
+        let title = document.getElementById("heading");
+        let pafagraf = document.getElementById("pafagraf");
+        let link = document.getElementById("link");
+
+
+        for (let i = 1; i <= 2; i ++) {
+            title.textContent += i.toString(); 
+        }
+
+
+        // let list = document.getElementById("list");
+        // let content = Array.from(list.children);
+        // console.log(content)
+        // content.forEach(function(el){
+        //   el.textContent = "new text";
+        // }); 
+
+        // let newlist = document.getElementById("list");
+        // console.log(newlist)
+    </script>   
 </body>
 </html>
