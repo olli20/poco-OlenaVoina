@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fake Netflix</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+          <img src="./images/netflix_logo.svg" alt="Netflix Logo">
+        </div>
+        <div class="language">
+          <button onclick="langMenu()" class="arrow">English</button>
+          <div id="language" class="language-options">
+            <a href="#">English</a>
+            <a href="#">Deutsch</a>
+            <a href="#">Français</a>
+          </div>
+        </div>
+        <div class="sign-in">
+          <button>Sign In</button>
+        </div>
+      </header>
+
+  <main>
+    <div class="content">
+        <h1 class="main-title">Unlimited movies, TV shows, and more.</h1>
+        <p class="descriptor">Watch anywhere. Cancel anytime.</p>
+        <p class="call-for-action">Ready to watch? Enter your email to create or restart your membership.</p>
+        <form>
+            <input class="email-input" placeholder="Email address" required>
+            <button class="submit-button" type="submit">Get started &gt;</button>
+        </form>
+    </div>
+  </main>
+  <script>
+    function langMenu() {
+        document.getElementById("language").classList.toggle("show");
+    }
+
+    document.getElementById("language").addEventListener("click", function(event) {
+        if (event.target.tagName === "A") {
+            const selectedLanguage = event.target.textContent;
+            document.querySelector('.arrow').textContent = selectedLanguage;
+            langMenu();
+        }
+    });
+
+    window.onclick = function(event) {
+        if (!event.target.matches('.arrow') && !event.target.closest('.language')) {
+            var dropdowns = document.getElementsByClassName("language-options");
+            for (let i = 0; i < dropdowns.length; i++) {
+                if (dropdowns[i].classList.contains('show')) {
+                    dropdowns[i].classList.remove('show');
+                }
+            }
+        }
+    };
+
+  </script>
+</body>
+</html>
